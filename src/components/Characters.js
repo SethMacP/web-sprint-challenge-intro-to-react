@@ -1,7 +1,7 @@
 import React , {useEffect, useState} from 'react'
 import axios from 'axios'
-import {Container, Row} from 'reactstrap';
-import Character from "./components/Character";
+import {Card,Col, Container, Row} from 'reactstrap';
+import Character from "./Character";
 
 export default function Characters (){
     let url = "https://rickandmortyapi.com/api/character"
@@ -10,7 +10,16 @@ export default function Characters (){
         axios
             .get(url)
             .then((res) => {
-                console.log('res',res);
+//added loop to give me a smaller set of data to work with.
+
+                console.log('res',res.data.results);
+                let newData = [];
+                for (let i = 0 ; i < 20; i++){
+                    newData.push(res.data.results[i])
+                }
+                setCharacters(newData)
+                
+
                 
             })
             .catch((err) =>{
@@ -18,14 +27,23 @@ export default function Characters (){
             })
         }, [])
       
-    console.log('characters',characters);
+    // console.log('characters',characters);
     return (
     <>
-        <Container>
-            <Row>
-                
-            </Row>
-        </Container>
+    <Card body inverse color="info">
+    <Container>
+        <Col >
+        <Row xl="3">
+            {characters.map((character)=>{
+                    return <Character 
+                    key = {character.id}
+                    character = {character}/>
+                })}
+        </Row>
+        </Col>
+    </Container>
+    </Card>
+        
     </>
     );
 }

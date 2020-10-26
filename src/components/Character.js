@@ -1,23 +1,42 @@
 // Write your Character component here
 import React , {useState, useEffect} from 'react';
-import {Row, CardTitle, CardBody, CardText, Card, CardSubtitle} from "reactstrap";
+import styled from 'styled-components';
+import {Row,Col, CardImg, Container, CardHeader, CardTitle, CardBody, CardText, Card, CardSubtitle} from "reactstrap";
 const Character = (props) => {
+const [ character, setCharacter ] = useState(props)
 
-const [ character, setCharacter ] = useState()
-setCharacter(props);
-console.log('char char', character)
+const MyImg = styled.img`
+    width: 150px;
+    height: 150px;
+    object-fit: scale;
+    flex-shrink: 2;
+    justify-content: center;
+    margin: 0 auto;
+`
+console.log('specific', character.character.image)
 
 return(
-<Row>
-<Card body inverse color="info">
-    <CardBody>
-        <CardTitle> Name </CardTitle>
-        <CardSubtitle color="secondary">  Location(origin.name)      </CardSubtitle>
-        <CardText>      </CardText>
-    </CardBody>
+<>
+<Card color="info">
+    <Col>
+        <CardHeader>
+            <MyImg src={character.character.image}></MyImg>   
+            <CardTitle>Name : {character.character.name}</CardTitle>
+            </CardHeader>
+        </Col>
+        
+        
+    <Row>
+    <Col xl="12">
+        <CardText>Location : {character.character.origin.name}</CardText>
+        <CardText>Living Status: {character.character.status}</CardText>
+        <CardText>Species : {character.character.species}</CardText>
+        <CardText>Gender : {character.character.gender}</CardText>
+        </Col>
+        </Row>   
 </Card>
-</Row>
-)}
-export default Character;
+</>
+    )}
+    export default Character;
 
 
