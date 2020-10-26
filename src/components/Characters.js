@@ -10,28 +10,23 @@ export default function Characters (){
         axios
             .get(url)
             .then((res) => {
-//added loop to give me a smaller set of data to work with.
-
-                console.log('res',res.data.results);
+                //added loop to give me a smaller set of data to work with.
+                // console.log('res',res.data.results);
                 let newData = [];
-                for (let i = 0 ; i < 20; i++){
+                for (let i = 0 ; i < 18; i++){
                     newData.push(res.data.results[i])
                 }
-                setCharacters(newData)
-                
-
-                
+                setCharacters(newData)  
             })
             .catch((err) =>{
                 console.log('error', err)
             })
         }, [])
-      
-    // console.log('characters',characters);
+
     return (
     <>
-    <Card body inverse color="info">
-    <Container>
+    <Card >
+    
         <Col >
         <Row xl="3">
             {characters.map((character)=>{
@@ -41,9 +36,8 @@ export default function Characters (){
                 })}
         </Row>
         </Col>
-    </Container>
+    
     </Card>
-        
     </>
     );
 }

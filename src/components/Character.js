@@ -24,15 +24,13 @@ return(
             <CardTitle>Name : {character.character.name}</CardTitle>
             </CardHeader>
         </Col>
-        
-        
     <Row>
-    <Col xl="12">
-        <CardText>Location : {character.character.origin.name}</CardText>
-        <CardText>Living Status: {character.character.status}</CardText>
-        <CardText>Species : {character.character.species}</CardText>
-        <CardText>Gender : {character.character.gender}</CardText>
-        </Col>
+        <Col xl="12">
+            <CardText>Location : {character.character.origin.name}</CardText>
+            <CardText>Living Status: {character.character.status}</CardText>
+            <CardText>Species : {character.character.species}</CardText>
+            <CardText>Gender : {character.character.gender}</CardText>
+            </Col>
         </Row>   
 </Card>
 </>
